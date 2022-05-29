@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">APOD</string>
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="favourite">favourite</string>
+    <string name="settings">settings</string>
+    <string name="search">Search</string>
+    <string name="link_is_empty">Link is empty</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="to_screen_1">На экран 1</string>
+    <string name="to_screen_2">На экран 2</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="astronomy_picture_of_the_day">Astronomy Picture of the Day</string>
+    <string name="photo_today">Photo today</string>
+    <string name="photo_yesterday">Photo yesterday</string>
+    <string name="photo_by_date">Photo by date</string>
+    <string name="pod_api_date_format">yyyy-MM-dd</string>
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="full_screen">full screen</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="by_date">by date</string>
+    <string name="notes">notes</string>
 </resources>
