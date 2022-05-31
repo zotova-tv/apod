@@ -29,4 +29,9 @@
     <dimen name="full_screen_fab_elevation">0dp</dimen>
     <dimen name="note_title_text_size">25sp</dimen>
     <dimen name="note_text_text_size">20sp</dimen>
+    <dimen name="note_add_text_input_margin_top">20dp</dimen>
+    <dimen name="note_save_button_text_size">25sp</dimen>
+    <dimen name="note_add_button_text_size">25sp</dimen>
+    <dimen name="note_add_bottom_sheet_max_height">500dp</dimen>
+    <dimen name="note_add_bottom_sheet_peek_height">80dp</dimen>
 </resources>

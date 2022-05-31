@@ -1,12 +1,11 @@
 package zotova_tv.apod.ui
 
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -34,7 +33,11 @@ class MainActivity :
         setBottomAppBar()
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, PictureOfTheDayFragment.newInstance(), MAIN_PICTURE_OF_THE_DAY_FRAGMENT_TAG)
+                .add(
+                    R.id.container,
+                    PictureOfTheDayFragment.newInstance(),
+                    MAIN_PICTURE_OF_THE_DAY_FRAGMENT_TAG
+                )
                 .commit()
         }
 
@@ -45,7 +48,7 @@ class MainActivity :
 
     override fun onSwitchNightMode(isChecked: Boolean) {
         prefs?.let {
-            it.edit().also {editor ->
+            it.edit().also { editor ->
                 editor.putBoolean(NIGHT_MODE_TAG, isChecked)
                 editor.apply()
             }
@@ -53,7 +56,7 @@ class MainActivity :
         switchNightMode(isChecked)
     }
 
-    private fun switchNightMode(isChecked: Boolean){
+    private fun switchNightMode(isChecked: Boolean) {
         when (isChecked) {
             true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -69,15 +72,17 @@ class MainActivity :
         when (item.itemId) {
             R.id.app_bar_settings -> supportFragmentManager.beginTransaction()
                 .add(R.id.container, SettingsFragment()).addToBackStack(null).commit()
-            R.id.app_bar_notes -> supportFragmentManager.beginTransaction()
-                .add(R.id.container, NotesFragment()).addToBackStack(null).commit()
+            R.id.app_bar_notes -> {
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.container, NotesFragment()).addToBackStack(null).commit()
+//                binding.fab.hide()
+            }
             R.id.app_bar_search -> {
                 supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.container, WikiSearchFragment(), WIKI_SEARCH_FRAGMENT_TAG)
-                        .addToBackStack(null)
-                        .commit()
-//                binding.fab.performClick()
+                    .beginTransaction()
+                    .replace(R.id.container, WikiSearchFragment(), WIKI_SEARCH_FRAGMENT_TAG)
+                    .addToBackStack(null)
+                    .commit()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -89,26 +94,37 @@ class MainActivity :
             if (isMain) {
                 isMain = false
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                ObjectAnimator.ofFloat(binding.fab, "rotation", 0f, 225f).start()
-
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.ic_back_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
             } else {
                 isMain = true
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                ObjectAnimator.ofFloat(binding.fab, "rotation", 0f, -180f).start()
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-                supportFragmentManager.findFragmentByTag(WIKI_SEARCH_FRAGMENT_TAG)?.also {
-                    supportFragmentManager.popBackStack()
-                }
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this,
+                        R.drawable.ic_plus_fab
+                    )
+                )
+                supportFragmentManager.popBackStack()
             }
         }
     }
 
     override fun onBackPressed() {
-        if(supportFragmentManager.backStackEntryCount > 1){
-            supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        }else{
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStackImmediate(
+                null,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+        } else {
             super.onBackPressed()
+            binding.fab.performClick()
         }
     }
 

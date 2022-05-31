@@ -39,32 +39,33 @@ class PictureOfTheDayViewModel(
             date?.let {
                 dateStr = SimpleDateFormat(POD_API_DATE_FORMAT, Locale.ENGLISH).format(it)
             }
-            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, true, dateStr).enqueue(object :
-                Callback<PODServerResponseData> {
-                override fun onResponse(
-                    call: Call<PODServerResponseData>,
-                    response: Response<PODServerResponseData>
-                ) {
-                    if (response.isSuccessful && response.body() != null) {
-                        response.body()?.let {
-                            liveDataForViewToObserve.value = PictureOfTheDayData.Success(it)
-                        }
-                    } else {
-                        val message = response.message()
-                        if (message.isNullOrEmpty()) {
-                            liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable(UNIDENTIFIED_ERROR_TEXT))
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, true, dateStr)
+                .enqueue(object :
+                    Callback<PODServerResponseData> {
+                    override fun onResponse(
+                        call: Call<PODServerResponseData>,
+                        response: Response<PODServerResponseData>
+                    ) {
+                        if (response.isSuccessful && response.body() != null) {
+                            response.body()?.let {
+                                liveDataForViewToObserve.value = PictureOfTheDayData.Success(it)
+                            }
                         } else {
-                            liveDataForViewToObserve.value =
-                                PictureOfTheDayData.Error(Throwable(message))
+                            val message = response.message()
+                            if (message.isNullOrEmpty()) {
+                                liveDataForViewToObserve.value =
+                                    PictureOfTheDayData.Error(Throwable(UNIDENTIFIED_ERROR_TEXT))
+                            } else {
+                                liveDataForViewToObserve.value =
+                                    PictureOfTheDayData.Error(Throwable(message))
+                            }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
-                    liveDataForViewToObserve.value = PictureOfTheDayData.Error(t)
-                }
-            })
+                    override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+                        liveDataForViewToObserve.value = PictureOfTheDayData.Error(t)
+                    }
+                })
         }
     }
 }

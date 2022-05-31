@@ -15,6 +15,7 @@ import androidx.transition.Slide
 import androidx.transition.TransitionManager
 import zotova_tv.apod.databinding.WikiSearchFragmentBinding
 import zotova_tv.apod.ui.util.hide
+import zotova_tv.apod.ui.util.hideKeyboard
 import zotova_tv.apod.ui.util.show
 
 const val WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/"
@@ -54,11 +55,7 @@ class WikiSearchFragment: Fragment() {
                 }
             }
             binding.wikiResult.loadUrl(WIKIPEDIA_URL + binding.inputEditText.text.toString())
-            activity?.let {
-                val inputMethodManager =
-                    it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-            }
+            hideKeyboard(view)
         }
     }
 

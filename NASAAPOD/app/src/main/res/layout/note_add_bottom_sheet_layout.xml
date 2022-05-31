@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/fragment_padding"
+    android:id="@+id/room_add_bottom_sheet_container"
+    style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="@dimen/note_add_bottom_sheet_peek_height"
+    android:maxHeight="@dimen/note_add_bottom_sheet_max_height"
+    android:visibility="visible"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/note_add_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/note_add_button_text_size"
+        android:text="@string/add_note" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/note_title_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/note_add_button"
+        android:hint="@string/title"
+        android:layout_marginTop="@dimen/note_add_text_input_margin_top">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/note_title_edit"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/note_text_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/note_title_edit_layout"
+        android:hint="@string/text"
+        android:layout_marginTop="@dimen/note_add_text_input_margin_top" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/note_text_edit"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:lines="15" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/note_save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/save"
+        android:textSize="@dimen/note_save_button_text_size"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
