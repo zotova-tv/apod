@@ -34,4 +34,8 @@
     <dimen name="note_add_button_text_size">25sp</dimen>
     <dimen name="note_add_bottom_sheet_max_height">500dp</dimen>
     <dimen name="note_add_bottom_sheet_peek_height">80dp</dimen>
+    <dimen name="note_item_corner_radius">3dp</dimen>
+    <dimen name="note_item_padding">10dp</dimen>
+    <dimen name="note_title_width">0dp</dimen>
+    <dimen name="note_text_width">0dp</dimen>
 </resources>
