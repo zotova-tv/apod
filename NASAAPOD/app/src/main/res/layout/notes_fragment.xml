@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,8 +9,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
-</FrameLayout>
+    <include
+        layout="@layout/note_add_bottom_sheet_layout"
+        android:id="@+id/note_add_bottom_sheet_include"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

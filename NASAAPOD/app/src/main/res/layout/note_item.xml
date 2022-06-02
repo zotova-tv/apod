@@ -11,29 +11,42 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="3dp">
+        app:cardCornerRadius="@dimen/note_item_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp">
+            android:padding="@dimen/note_item_padding">
             <TextView
                 android:id="@+id/note_title"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/note_title_width"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/note_edit_button"
                 android:textSize="@dimen/note_title_text_size"
                 tools:text="Note title"/>
             <TextView
                 android:id="@+id/note_text"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/note_text_width"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/note_title"
+                app:layout_constraintEnd_toStartOf="@id/note_edit_button"
                 android:textSize="@dimen/note_text_text_size"
                 tools:text="Note description Note description Note description Note description Note description Note description Note description Note description Note description Note description "/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/note_edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="?attr/colorOnSurface"
+                android:clickable="true"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+
 </LinearLayout>
