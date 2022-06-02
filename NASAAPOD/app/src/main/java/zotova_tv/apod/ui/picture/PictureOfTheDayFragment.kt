@@ -1,7 +1,12 @@
 package zotova_tv.apod.ui.picture
 
 import android.app.DatePickerDialog
+import android.graphics.Color
+import android.graphics.Typeface.BOLD
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.*
 import android.view.*
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -66,7 +71,7 @@ class PictureOfTheDayFragment : Fragment() {
                 val serverResponseData = data.serverResponseData
                 val url = if(serverResponseData.mediaType != MEDIA_TYPE_VIDEO) serverResponseData.url
                     else serverResponseData.thumbnailUrl
-                val description = serverResponseData.explanation ?: EMPTY_STRING
+                val description = decorateDescription(serverResponseData.explanation ?: EMPTY_STRING)
                 val podDate = serverResponseData.date ?: EMPTY_STRING
                 val title = serverResponseData.title ?: EMPTY_STRING
                 var fullScreenUrl: String? = serverResponseData.hdurl
@@ -132,6 +137,34 @@ class PictureOfTheDayFragment : Fragment() {
                 dpd.show()
             }
         }
+    }
+
+    private fun decorateDescription(description: String): SpannableString{
+        var spannableDescription = SpannableString(description)
+        val firstLetterIndexes = mutableListOf(0)
+        firstLetterIndexes.addAll(
+            Regex("\\. [A-Z]").findAll(description).toMutableList().map{
+                it.range.last
+            }
+        )
+        for(i in 0 until firstLetterIndexes.size){
+            spannableDescription.setSpan(
+                StyleSpan(BOLD),
+                firstLetterIndexes[i], firstLetterIndexes[i] + 1,
+                Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+            )
+            spannableDescription.setSpan(
+                RelativeSizeSpan(1.2f),
+                firstLetterIndexes[i], firstLetterIndexes[i] + 1,
+                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+            )
+            spannableDescription.setSpan(
+                ForegroundColorSpan(Color.DKGRAY),
+                firstLetterIndexes[i], firstLetterIndexes[i] + 1,
+                Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+            )
+        }
+        return spannableDescription
     }
 
     override fun onDestroyView() {
