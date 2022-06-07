@@ -25,7 +25,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/note_edit_button"
                 android:textSize="@dimen/note_title_text_size"
-                tools:text="Note title"/>
+                tools:text="Note title"
+                android:fontFamily="@font/roboto"/>
             <TextView
                 android:id="@+id/note_text"
                 android:layout_width="@dimen/note_text_width"
@@ -34,6 +35,7 @@
                 app:layout_constraintTop_toBottomOf="@id/note_title"
                 app:layout_constraintEnd_toStartOf="@id/note_edit_button"
                 android:textSize="@dimen/note_text_text_size"
+                android:fontFamily="@font/roboto"
                 tools:text="Note description Note description Note description Note description Note description Note description Note description Note description Note description Note description "/>
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/note_edit_button"

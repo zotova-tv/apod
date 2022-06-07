@@ -31,7 +31,6 @@ class NotesAdapter(
     }
 
     override fun getItemCount(): Int {
-        println(notes)
         return notes.size
     }
 
