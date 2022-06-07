@@ -8,7 +8,7 @@ import zotova_tv.apod.BuildConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import zotova_tv.apod.domain.PODRetrofitImpl
+import zotova_tv.apod.data.PODRetrofitImpl
 import zotova_tv.apod.data.PODServerResponseData
 import java.text.SimpleDateFormat
 import java.util.*

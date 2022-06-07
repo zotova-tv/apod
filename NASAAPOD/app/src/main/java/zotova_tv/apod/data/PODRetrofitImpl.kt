@@ -1,4 +1,4 @@
-package zotova_tv.apod.domain
+package zotova_tv.apod.data
 
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
