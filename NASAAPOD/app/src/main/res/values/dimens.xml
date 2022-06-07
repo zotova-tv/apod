@@ -38,4 +38,6 @@
     <dimen name="note_item_padding">10dp</dimen>
     <dimen name="note_title_width">0dp</dimen>
     <dimen name="note_text_width">0dp</dimen>
+    <dimen name="splash_image_view_width">150dp</dimen>
+    <dimen name="splash_image_view_height">150dp</dimen>
 </resources>

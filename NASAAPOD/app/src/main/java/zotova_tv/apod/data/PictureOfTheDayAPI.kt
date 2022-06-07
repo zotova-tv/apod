@@ -1,9 +1,8 @@
-package zotova_tv.apod.domain
+package zotova_tv.apod.data
 
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import zotova_tv.apod.data.PODServerResponseData
 
 interface PictureOfTheDayAPI {
 
